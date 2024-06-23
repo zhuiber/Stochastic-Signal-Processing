@@ -1,0 +1,25 @@
+digraph G {
+  rankdir = TB;
+  node [shape = box; style = rounded;];
+  
+  A [label = "Start";];
+  B [label = "Initialize Parameters";];
+  C [label = "Generate Chirp Signal";];
+  D [label = "Compute Power Spectral Density";];
+  E [label = "Initialize Simulation Parameters";];
+  F [label = "Loop Over SNR Values";];
+  G [label = "Loop Over Simulations";];
+  H [label = "Generate Random End Time";];
+  I [label = "Simulate Received Signal\nand Add Noise";];
+  J [label = "Apply Matched Filter";];
+  K [label = "Estimate End Time";];
+  L [label = "Calculate Squared Error\nand Check Success Criteria";];
+  M [label = "Calculate Average MSE\nand Accuracy";];
+  N [label = "Generate and Display Table";];
+  O [label = "Plot Results";];
+  P [label = "End";];
+  
+  A -> B -> C -> D -> E -> F -> G -> H -> I -> J -> K -> L -> G;
+  G -> M -> F;
+  F -> N -> O -> P;
+}

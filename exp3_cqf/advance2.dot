@@ -1,0 +1,41 @@
+digraph G {
+  rankdir = TB;
+  node [shape = box; style = rounded;];
+  
+  start [label = "Start";];
+  init_params [label = "Initialize Parameters";];
+  gen_chirp [label = "Generate Chirp Signal";];
+  plot_chirp [label = "Plot Chirp Signal";];
+  init_results [label = "Initialize Result Arrays";];
+  snr_loop [label = "Loop over SNR Range";];
+  sim_loop [label = "Loop over Simulations";];
+  gen_signal [label = "Generate Signal with Noise";];
+  est_end_time [label = "Estimate End Time";];
+  calc_error [label = "Calculate Error";];
+  calc_results [label = "Calculate Results";];
+  display_plot [label = "Display and Plot Results";];
+  end [label = "End";];
+  
+  start -> init_params;
+  init_params -> gen_chirp;
+  gen_chirp -> plot_chirp;
+  plot_chirp -> init_results;
+  init_results -> snr_loop;
+  snr_loop -> sim_loop;
+  sim_loop -> gen_signal;
+  gen_signal -> est_end_time;
+  est_end_time -> calc_error;
+  calc_error -> sim_loop;
+  sim_loop -> snr_loop;
+  snr_loop -> calc_results;
+  calc_results -> display_plot;
+  display_plot -> end;
+  
+  subgraph {
+    rank = same;
+    sim_loop;
+    gen_signal;
+    est_end_time;
+    calc_error;
+  }
+}

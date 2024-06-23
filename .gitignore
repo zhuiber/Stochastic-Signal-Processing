@@ -1,0 +1,7 @@
+/report/
+/课件/
+/资料/
+*.pdf
+*.doc
+*.docx
+*.zip
